@@ -22,7 +22,6 @@
 
 namespace CryptaEve\Seat\Strict\Observers;
 
-use CryptaEve\Seat\Strict\Observers\AbstractAuditObserver;
 use Seat\Web\Models\Squads\SquadMember;
 
 /**
