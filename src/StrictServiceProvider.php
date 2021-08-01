@@ -2,11 +2,12 @@
 
 namespace CryptaEve\Seat\Strict;
 
+use CryptaEve\Seat\SquadSync\Observers\SquadMemberObserver;
 use CryptaEve\Seat\Strict\Commands\Audit;
 use CryptaEve\Seat\Strict\Observers\RefreshTokenObserver;
 use Seat\Eveapi\Models\RefreshToken;
 use Seat\Services\AbstractSeatPlugin;
-
+use Seat\Web\Models\Squads\SquadMember;
 
 class StrictServiceProvider extends AbstractSeatPlugin
 {
@@ -49,6 +50,7 @@ class StrictServiceProvider extends AbstractSeatPlugin
     private function add_events()
     {
         RefreshToken::observe(RefreshTokenObserver::class);
+        SquadMember::observe(SquadMemberObserver::class);
 
     }
 

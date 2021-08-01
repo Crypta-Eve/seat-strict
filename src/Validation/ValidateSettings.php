@@ -15,15 +15,15 @@ class ValidateSettings extends FormRequest
     {
         return [
             // Enablers
-            'globalenable'    => 'integer|present|min:0|max:1',
+            'globalenable'    => 'integer|min:0|max:1',
 
             // What to remove
-            'removesquads'    => 'integer|present|min:0|max:1',
-            'removeperms'     => 'integer|present|min:0|max:1',
-            'removemods'     => 'integer|present|min:0|max:1',
+            'removesquads'    => 'integer|min:0|max:1',
+            'removeperms'     => 'integer|min:0|max:1',
+            'removemods'     => 'integer|min:0|max:1',
 
             // Removal Reasons
-            'tokeninvalid'    => 'integer|present|min:0|max:1',
+            'tokeninvalid'    => 'integer|min:0|max:1',
         ];
     }
 }

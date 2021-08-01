@@ -26,6 +26,10 @@ There is also the command `strict:audit` which will queue jobs to audit every us
 * Invalid Token - If the user has any invalid tokens then strip their permissions
 
 
+## Caveats
+
+Until changes are made to SeAT core (working on it) the behaviour with auto squads is a bit flaky, as it will be a constant battle between seat re adding the squad and this plugin removing it. Until this is resolved, you may notice increased job load as this fighting occurs.
+
 ## Quick Installation
 ### Docker Install
 

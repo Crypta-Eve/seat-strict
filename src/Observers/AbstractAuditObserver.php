@@ -22,31 +22,29 @@
 
 namespace CryptaEve\Seat\Strict\Observers;
 
-use Seat\Eveapi\Models\RefreshToken;
+use Illuminate\Database\Eloquent\Model;
+use Seat\Web\Models\Squads\Squad;
+use Seat\Web\Models\User;
 
 /**
- * Class RefreshTokenObserver.
+ * Class AbstractAuditObserver.
  *
- * @package CryptaEve\Seat\Strict\Observers
+ * @package Cr\Web\Observers
  */
-class RefreshTokenObserver extends AbstractAuditObserver
+abstract class AbstractAuditObserver
 {
-
     /**
-     * @param \Seat\Eveapi\Models\RefreshToken $token
+     * Dispatch a new audit job
+     *
+     * @param \Seat\Web\Models\User $user
      */
-    public function softDeleted(RefreshToken $token)
+    protected function conductAudit(User $user)
     {
-        $this->deleted($token);
+        try {
+            AuditUser::dispatch($user)
+                ->delay(now()->addSeconds(15));
+        } catch (Exception $e) {
+            logger()->error($e->getMessage());
+        }
     }
-
-    /**
-     * @param \Seat\Eveapi\Models\RefreshToken $token
-     */
-    public function deleted(RefreshToken $token)
-    {
-        $this->conductAudit($token->user);
-        
-    }
-
 }

@@ -20,33 +20,23 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-namespace CryptaEve\Seat\Strict\Observers;
+namespace Seat\Web\Observers;
 
-use Seat\Eveapi\Models\RefreshToken;
+use CryptaEve\Seat\Strict\Observers\AbstractAuditObserver;
+use Seat\Web\Models\Squads\SquadMember;
 
 /**
- * Class RefreshTokenObserver.
+ * Class SquadMemberObserver.
  *
- * @package CryptaEve\Seat\Strict\Observers
+ * @package Seat\Web\Observers
  */
-class RefreshTokenObserver extends AbstractAuditObserver
+class SquadMemberObserver extends AbstractAuditObserver
 {
-
     /**
-     * @param \Seat\Eveapi\Models\RefreshToken $token
+     * @param \Seat\Web\Models\Squads\SquadMember $member
      */
-    public function softDeleted(RefreshToken $token)
+    public function created(SquadMember $member)
     {
-        $this->deleted($token);
+        $this->conductAudit($member->user);
     }
-
-    /**
-     * @param \Seat\Eveapi\Models\RefreshToken $token
-     */
-    public function deleted(RefreshToken $token)
-    {
-        $this->conductAudit($token->user);
-        
-    }
-
 }
