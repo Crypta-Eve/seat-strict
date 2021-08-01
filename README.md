@@ -14,16 +14,16 @@ There is also the command `strict:audit` which will queue jobs to audit every us
 
 ### Configuration
 
-#### PLugin Enable
-Global Enable - This setting will enable or disable the entire plugin
+#### Plugin Enable
+* Global Enable - This setting will enable or disable the entire plugin
 
 #### What to Remove
-Remove Squads - Remove users from squad member lists when they have an invalid token
-Remove Mods   - Remove users from squad moderator positions of squads when they have an invalid token
-Remove Squads - Remove users from squad member lists when they have an invalid token
+* Remove Squads - Remove users from squad member lists when they have an invalid token
+* Remove Mods   - Remove users from squad moderator positions of squads when they have an invalid token
+* Remove Squads - Remove users from squad member lists when they have an invalid token
 
 #### Reason for Removal
-Invalid Token - If the user has any invalid tokens then strip their permissions
+* Invalid Token - If the user has any invalid tokens then strip their permissions
 
 
 ## Quick Installation
