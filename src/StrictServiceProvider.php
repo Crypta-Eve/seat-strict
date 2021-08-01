@@ -88,7 +88,6 @@ class StrictServiceProvider extends AbstractSeatPlugin
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations/');
     }
 
-
     /**
      * Return the plugin public name as it should be displayed into settings.
      *
@@ -100,7 +99,6 @@ class StrictServiceProvider extends AbstractSeatPlugin
     {
         return 'SeAT Strict';
     }
-
 
     /**
      * Return the plugin repository address.

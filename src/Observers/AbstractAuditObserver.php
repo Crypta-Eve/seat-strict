@@ -22,8 +22,6 @@
 
 namespace CryptaEve\Seat\Strict\Observers;
 
-use Illuminate\Database\Eloquent\Model;
-use Seat\Web\Models\Squads\Squad;
 use Seat\Web\Models\User;
 
 /**
@@ -34,7 +32,7 @@ use Seat\Web\Models\User;
 abstract class AbstractAuditObserver
 {
     /**
-     * Dispatch a new audit job
+     * Dispatch a new audit job.
      *
      * @param \Seat\Web\Models\User $user
      */

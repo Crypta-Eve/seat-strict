@@ -5,13 +5,11 @@ namespace CryptaEve\Seat\Strict\Http\Controllers;
 use CryptaEve\Seat\Strict\Validation\ValidateSettings;
 use Seat\Web\Http\Controllers\Controller;
 
-
-class StrictController extends Controller 
+class StrictController extends Controller
 {
-
     public function getConfigureView()
     {
-        return view("strict::configure");
+        return view('strict::configure');
     }
 
     public function saveSettings(ValidateSettings $request)
@@ -32,6 +30,6 @@ class StrictController extends Controller
 
     public function getAboutView()
     {
-        return view("strict::about");
+        return view('strict::about');
     }
 }
