@@ -1,6 +1,6 @@
 {
     "name": "cryptaeve/seat-strict",
-    "description": "Module to enforce ESI token compliance",
+    "description": "Module to provide tighter enforcement of privileges on SeAT 4",
     "type": "seat-plugin",
     "license": "GPL-2.0-only",
     "authors": [
