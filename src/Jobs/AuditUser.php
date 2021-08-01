@@ -50,13 +50,13 @@ class AuditUser extends AbstractJob
 
         logger()->error('Auditing ' . $user->name);
 
-        if (setting('crypta_strict_enable', true) != "1") {
+        if (setting('crypta_strict_enable', true) != '1') {
             return;
         }
 
         $shouldStrip = false;
 
-        if (setting('crypta_strict_reasons_token', true) == "1") {
+        if (setting('crypta_strict_reasons_token', true) == '1') {
             $hasTrashed = ($user->all_characters()->count() - $user->characters->count()) > 0;
             if ($hasTrashed)
                 $shouldStrip = true;
@@ -65,38 +65,34 @@ class AuditUser extends AbstractJob
 
         if ($shouldStrip){
 
-            if (setting('crypta_strict_remove_squads', true) == "1") {
+            if (setting('crypta_strict_remove_squads', true) == '1') {
                 logger()->error('Stripping squads from ' . $user->name);
-                
+
                 // Remove this person from any squads they are a member of
-                $user->squads()->each(function ($squad) use ($user){
+                $user->squads()->each(function ($squad) use ($user) {
                     $squad->members()->detach($user->id);
                 });
             }
 
-            if (setting('crypta_strict_remove_mods', true) == "1") {
+            if (setting('crypta_strict_remove_mods', true) == '1') {
                 logger()->error('Stripping mod roles from ' . $user->name);
-                
+
                 // Remove this person from any squads they are a member of
-                $user->moderators()->each(function ($squad) use ($user){
+                $user->moderators()->each(function ($squad) use ($user) {
                     $squad->moderators()->detach($user->id);
                 });
             }
 
-            if (setting('crypta_strict_remove_perms', true) == "1") {
+            if (setting('crypta_strict_remove_perms', true) == '1') {
                 logger()->error('Stripping perms from ' . $user->name);
-                
+
                 // Remove this person from any squads they are a member of
-                $user->roles()->each(function ($role) use ($user){
+                $user->roles()->each(function ($role) use ($user) {
                     if ($role->users()->detach($user->id) > 0)
                         event(new UserRoleRemoved($user->id, $role));
                 });
             }
         }
-        
-        return;
-        
+
     }
-
-
 }

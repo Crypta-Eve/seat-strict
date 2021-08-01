@@ -31,7 +31,6 @@ use Seat\Eveapi\Models\RefreshToken;
  */
 class RefreshTokenObserver extends AbstractAuditObserver
 {
-
     /**
      * @param \Seat\Eveapi\Models\RefreshToken $token
      */
@@ -46,7 +45,6 @@ class RefreshTokenObserver extends AbstractAuditObserver
     public function deleted(RefreshToken $token)
     {
         $this->conductAudit($token->user);
-        
-    }
 
+    }
 }
