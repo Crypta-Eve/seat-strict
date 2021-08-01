@@ -27,7 +27,7 @@
                         @if (setting('crypta_strict_enable', true) == "1")
                         <input class="form-check-input" type="checkbox" name="globalenable" id="globalenable" value="1" checked />
                         @else
-                        <input class="form-check-input" type="checkbox" name="globalenable" id="globalenable" value="0" />
+                        <input class="form-check-input" type="checkbox" name="globalenable" id="globalenable" value="1" />
                         @endif
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                         @if (setting('crypta_strict_remove_squads', true) == "1")
                         <input class="form-check-input" type="checkbox" name="removesquads" id="removesquads" value="1" checked />
                         @else
-                        <input class="form-check-input" type="checkbox" name="removesquads" id="removesquads" value="0" />
+                        <input class="form-check-input" type="checkbox" name="removesquads" id="removesquads" value="1" />
                         @endif
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                         @if (setting('crypta_strict_remove_mods', true) == "1")
                         <input class="form-check-input" type="checkbox" name="removemods" id="removemods" value="1" checked />
                         @else
-                        <input class="form-check-input" type="checkbox" name="removemods" id="removemods" value="0" />
+                        <input class="form-check-input" type="checkbox" name="removemods" id="removemods" value="1" />
                         @endif
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                         @if (setting('crypta_strict_remove_perms', true) == "1")
                         <input class="form-check-input" type="checkbox" name="removeperms" id="removeperms" value="1" checked />
                         @else
-                        <input class="form-check-input" type="checkbox" name="removeperms" id="removeperms" value="0" />
+                        <input class="form-check-input" type="checkbox" name="removeperms" id="removeperms" value="1" />
                         @endif
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                         @if (setting('crypta_strict_reasons_token', true) == "1")
                         <input class="form-check-input" type="checkbox" name="tokeninvalid" id="tokeninvalid" value="1" checked />
                         @else
-                        <input class="form-check-input" type="checkbox" name="tokeninvalid" id="tokeninvalid" value="0" />
+                        <input class="form-check-input" type="checkbox" name="tokeninvalid" id="tokeninvalid" value="1" />
                         @endif
                     </div>
                 </div>

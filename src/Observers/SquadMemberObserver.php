@@ -20,7 +20,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-namespace Seat\Web\Observers;
+namespace CryptaEve\Seat\Strict\Observers;
 
 use CryptaEve\Seat\Strict\Observers\AbstractAuditObserver;
 use Seat\Web\Models\Squads\SquadMember;
@@ -28,7 +28,7 @@ use Seat\Web\Models\Squads\SquadMember;
 /**
  * Class SquadMemberObserver.
  *
- * @package Seat\Web\Observers
+ * @package CryptaEve\Seat\Strict\Observers
  */
 class SquadMemberObserver extends AbstractAuditObserver
 {

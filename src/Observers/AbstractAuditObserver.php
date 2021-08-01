@@ -22,6 +22,7 @@
 
 namespace CryptaEve\Seat\Strict\Observers;
 
+use CryptaEve\Seat\Strict\Jobs\AuditUser;
 use Seat\Web\Models\User;
 
 /**
@@ -39,8 +40,7 @@ abstract class AbstractAuditObserver
     protected function conductAudit(User $user)
     {
         try {
-            AuditUser::dispatch($user)
-                ->delay(now()->addSeconds(15));
+            AuditUser::dispatch($user);
         } catch (Exception $e) {
             logger()->error($e->getMessage());
         }

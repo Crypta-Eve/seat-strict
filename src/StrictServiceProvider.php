@@ -2,9 +2,9 @@
 
 namespace CryptaEve\Seat\Strict;
 
-use CryptaEve\Seat\SquadSync\Observers\SquadMemberObserver;
 use CryptaEve\Seat\Strict\Commands\Audit;
 use CryptaEve\Seat\Strict\Observers\RefreshTokenObserver;
+use CryptaEve\Seat\Strict\Observers\SquadMemberObserver;
 use Seat\Eveapi\Models\RefreshToken;
 use Seat\Services\AbstractSeatPlugin;
 use Seat\Web\Models\Squads\SquadMember;
