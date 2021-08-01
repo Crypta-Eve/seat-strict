@@ -1,6 +1,6 @@
 {
     "name": "cryptaeve/seat-strict",
-    "description": "Module to provide plaintext servable urls",
+    "description": "Module to enforce ESI token compliance",
     "type": "seat-plugin",
     "license": "GPL-2.0-only",
     "authors": [
