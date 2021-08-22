@@ -12,6 +12,9 @@ use Seat\Web\Models\User;
  */
 class AuditUser extends AbstractJob
 {
+
+    const DOOMHEIM_CORP_ID = 1000001;
+
     /**
      * {@inheritdoc}
      */
@@ -48,7 +51,7 @@ class AuditUser extends AbstractJob
 
         $user = $this->user;
 
-        logger()->error('Auditing ' . $user->name);
+        logger()->debug('Auditing ' . $user->name);
 
         if (setting('crypta_strict_enable', true) != '1') {
             return;
@@ -57,7 +60,19 @@ class AuditUser extends AbstractJob
         $shouldStrip = false;
 
         if (setting('crypta_strict_reasons_token', true) == '1') {
-            $hasTrashed = ($user->all_characters()->count() - $user->characters->count()) > 0;
+
+            $hasTrashed = $user->all_characters()->filter(function ($char, $key) {
+
+                if ($char->refresh_token()->exists())
+                    return false;
+
+                if ($char->affiliation()->exists() && $char->affiliation->corporation_id == AuditUser::DOOMHEIM_CORP_ID)
+                    return false;
+
+                return true;
+
+            })->count() > 0;
+
             if ($hasTrashed)
                 $shouldStrip = true;
 
@@ -66,7 +81,7 @@ class AuditUser extends AbstractJob
         if ($shouldStrip){
 
             if (setting('crypta_strict_remove_squads', true) == '1') {
-                logger()->error('Stripping squads from ' . $user->name);
+                logger()->info('Stripping squads from ' . $user->name);
 
                 // Remove this person from any squads they are a member of
                 $user->squads()->each(function ($squad) use ($user) {
@@ -75,7 +90,7 @@ class AuditUser extends AbstractJob
             }
 
             if (setting('crypta_strict_remove_mods', true) == '1') {
-                logger()->error('Stripping mod roles from ' . $user->name);
+                logger()->info('Stripping mod roles from ' . $user->name);
 
                 // Remove this person from any squads they are a member of
                 $user->moderators()->each(function ($squad) use ($user) {
@@ -84,7 +99,7 @@ class AuditUser extends AbstractJob
             }
 
             if (setting('crypta_strict_remove_perms', true) == '1') {
-                logger()->error('Stripping perms from ' . $user->name);
+                logger()->info('Stripping perms from ' . $user->name);
 
                 // Remove this person from any squads they are a member of
                 $user->roles()->each(function ($role) use ($user) {
